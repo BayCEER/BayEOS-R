@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project [
+	       <!ENTITY common SYSTEM "../common.xml">
+]>
+
+<project basedir="." name="bayeos">
+	
+	<property name="PACKAGE_NAME" value="bayeos"/>
+	<property name="PACKAGE_VERSION" value="1.4.0"/>
+	<property name="PACKAGE_WINDOWS" value="${PACKAGE_NAME}_${PACKAGE_VERSION}.zip"/>	
+
+	<!-- include common settings for all packages -->
+	&common;
+
+</project>
+
+

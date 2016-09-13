@@ -1,0 +1,10 @@
+import(RCurl)
+import(XML)
+import(methods)
+import(zoo)
+import(bayeos)
+
+export("bayeosgateway.connect")
+export("bayeosgateway.close")
+export("bayeosgateway.post")
+export("bayeosgateway.get")

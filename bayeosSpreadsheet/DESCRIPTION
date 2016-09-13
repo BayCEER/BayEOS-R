@@ -1,0 +1,11 @@
+Package: bayeosSpreadsheet
+Type: Package
+Title: Import time series data from XLSX and ODS
+Version: 1.0.0
+Date: 2011-12-13
+Author: Stefan Holzheu, Oliver Archner
+Maintainer: Oliver Archner <oliver.archner@uni-bayreuth.de>
+Description: This package provides functions to access BayEOS databases
+Imports: bayeos, RExcelXML, zoo, methods 
+License: LGPL-3
+LazyLoad: yes

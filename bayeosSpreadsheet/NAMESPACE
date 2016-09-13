@@ -1,0 +1,12 @@
+
+
+
+importFrom(RExcelXML, read.xlsx)
+import(methods)
+import(zoo)
+
+import(bayeos)
+
+
+export(bayeos.readODS)
+export(bayeos.readXLSX)

@@ -1,0 +1,9 @@
+Package: bayeosgateway
+Type: Package
+Title: Simple BayEOS-Gateway functions
+Version: 1.0.0
+Date: 2014-02-14
+Author: Stefan Holzheu
+Maintainer: Stefan Holzheu <holzheu@bayceer.uni-bayreuth.de>
+Description: Simple BayEOS-Gateway functions
+License: GPL
