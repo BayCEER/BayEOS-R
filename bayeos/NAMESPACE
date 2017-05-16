@@ -10,6 +10,7 @@ export(bayeos.close)
 
 export(bayeos.getSeries)
 export(bayeos.writeSeries)
+export(bayeos.deleteRows)
 export(bayeos.import)
 export(bayeos.setStatus)
 export(bayeos.readCSV)

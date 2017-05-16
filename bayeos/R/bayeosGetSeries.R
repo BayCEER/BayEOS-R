@@ -2,11 +2,29 @@
 
 
 
+bayeos.deleteRows <- function(ids,datetimes,con=1){
+	if(is.character(ids)) ids=sapply(ids,function(x) bayeos.path2id(x,con))
+	ids=as.integer(ids)
+	for(id in ids){
+		cat("Deleting",id)
+		res=bayeos.call(con,'MassenTableHandler.removeRows',id,datetimes)
+		if(res) cat(" ok\n")
+		else {
+			cat(" failed\n")
+			return(FALSE)
+		}
+		
+	}
+	return(TRUE)
+}
+
 # setStatus
 #
 bayeos.setStatus <- function(ids,datetimes,status,con=1){
   if(is.character(ids)) ids=sapply(ids,function(x) bayeos.path2id(x,con))
   ids=as.integer(ids)
+
+  
   if(is.character(status)){
 		status_txt=status
 		status=.localenv$c[[con]]$status[status]
@@ -136,9 +154,10 @@ bayeos.writeSeries <- function(ids,data,con=1,update=FALSE,status=NA,maxchunk=50
 	if(class(data)=='data.frame')
 		data=bayeos.df2zoo(data)
 	index=1:length(ids)
+	
 	if(update ){
 	  checkServerVersion(con,1,8)
-    xmlrpcfunc='MassenTableHandler.upsertByteRows'
+      xmlrpcfunc='MassenTableHandler.upsertByteRows'
 	} else
 	  xmlrpcfunc='MassenTableHandler.addByteRows'
 	

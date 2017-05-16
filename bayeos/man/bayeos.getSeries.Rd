@@ -2,6 +2,7 @@
 \alias{bayeos.getSeries}
 \alias{bayeos.writeSeries}
 \alias{bayeos.setStatus}
+\alias{bayeos.deleteRows}
 \alias{bayeos.import}
 \alias{bayeos.readCSV}
 \alias{bayeos.zoo2df}
@@ -10,6 +11,8 @@
  bayeos.getSeries creates a zoo object from a BayEOS connection. 
  bayeos.readCSV reads data from csv file into a zoo object.
  bayeos.import and bayeos.writeSeries write zoo objects or data frames to BayEOS database.
+ bayeos.setStatus sets status for selected timestamps and ids
+ bayeos.deleteRows behaves like bayeos.setStatus but removes the rows
 }
 \usage{
 bayeos.getSeries(ids,con=1,from='yesterday',until='today',interval=NA,
@@ -21,6 +24,7 @@ bayeos.import(data,folder='./',columnSelection=NULL,columnDestination=NULL,
     con=1,update=FALSE,status=NA,maxchunk=5000)
 bayeos.writeSeries(ids,data,con=1,update=FALSE,status=NA,maxchunk=5000)
 bayeos.setStatus(ids,datetimes,status,con=1)
+bayeos.deleteRows(ids,datetimes,con=1)
 bayeos.zoo2df(data)
 }
 %- maybe also 'usage' for other objects documented here.
