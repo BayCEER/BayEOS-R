@@ -98,6 +98,12 @@ isValidRowCount <- function (sec,timefilter,maxrows){
 }
 
 getTimeFilter <- function (from,until,interval,con){
+    if(class(from)[1]=="POSIXct"){
+      attr(from,'tzone')<-.localenv$c[[con]]$tz
+    }
+    if(class(until)[1]=="POSIXct"){
+      attr(until,'tzone')<-.localenv$c[[con]]$tz
+    }
 	from=as.character(from)
 	until=as.character(until)
 	

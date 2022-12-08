@@ -24,7 +24,7 @@ bayeos.import(data,folder='./',columnSelection=NULL,columnDestination=NULL,
     con=1,update=FALSE,status=NA,maxchunk=5000)
 bayeos.writeSeries(ids,data,con=1,update=FALSE,status=NA,maxchunk=5000)
 bayeos.setStatus(ids,datetimes,status,con=1)
-bayeos.deleteRows(ids,datetimes,con=1)
+bayeos.deleteRows(ids,datetimes=NULL,from=NULL,until=NULL,con=1)
 bayeos.zoo2df(data)
 }
 %- maybe also 'usage' for other objects documented here.

@@ -2,12 +2,22 @@
 
 
 
-bayeos.deleteRows <- function(ids,datetimes,con=1){
+bayeos.deleteRows <- function(ids,datetimes=NULL,from=NULL,until=NULL,con=1){
 	if(is.character(ids)) ids=sapply(ids,function(x) bayeos.path2id(x,con))
 	ids=as.integer(ids)
+	if(is.null(datetimes) && is.null(from) && is.null(until)){
+		cat(" you have to give datetimes or from and until")
+		return(FALSE)
+	}
 	for(id in ids){
 		cat("Deleting",id)
-		res=bayeos.call(con,'MassenTableHandler.removeRows',id,datetimes)
+		if(! is.null(datetimes))
+			res=bayeos.call(con,'MassenTableHandler.removeRows',id,datetimes)
+		if(! is.null(from) && ! is.null(until)){
+			timefilter=getTimeFilter(from,until,NA,con)
+			res=bayeos.call(con,'MassenTableHandler.removeRowsByInterval',id,timefilter[1],timefilter[2])
+		}
+			
 		if(res) cat(" ok\n")
 		else {
 			cat(" failed\n")
