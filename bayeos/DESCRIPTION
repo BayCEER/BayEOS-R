@@ -1,8 +1,8 @@
 Package: bayeos
 Type: Package
 Title: BayEOS Server Access
-Version: 1.4.8
-Date: 2022-07-21
+Version: 1.5.0
+Date: 2022-12-08
 Author: Stefan Holzheu, Oliver Archner
 Maintainer: Stefan Holzheu <stefan.holzheu@bayceer.uni-bayreuth.de>
 Description: This package provides functions to access BayEOS databases
