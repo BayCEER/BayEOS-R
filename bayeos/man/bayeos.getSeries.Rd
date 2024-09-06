@@ -17,7 +17,7 @@
 \usage{
 bayeos.getSeries(ids,con=1,from='yesterday',until='today',interval=NA,
 		aggfunc=NA,aggint=NA, maxrows=10000,
-		csFlag=FALSE,statusFilter=c(0,1,2,3,4,8,9),localTime=F)
+		csFlag=FALSE,statusFilter=c(0,1,2,3,4,8,9))
 bayeos.readCSV(file,tz='Etc/GMT-1',dateformat=c('\%d.\%m.\%Y \%H:\%M'),skip=0,sep=';',dec='.',
 		na.strings='NA',header=TRUE,comment.char ="#",skipCols=0,...)
 bayeos.import(data,folder='./',columnSelection=NULL,columnDestination=NULL,
@@ -47,7 +47,6 @@ bayeos.zoo2df(data)
   \item{columnSelection}{column numbers starting with 1 or character vector of column names to be imported}
   \item{datetimes}{Vector of POSIXct datetimes}
   \item{status}{Integer or character; valid values see bayeos.getConnection(con)$status}
-  \item{localTime}{If set to TRUE, bayeos.getSeries uses the time zone given by Sys.timezone()}
   \item{maxchunk}{maximum number of data points passed to one post request}
   \item{...}{Further arguments to be passed to 'read.table'.}
 } 
@@ -62,11 +61,11 @@ bayeos.zoo2df(data)
 \details{
   BayEOS-R package handles time series data as zoo data type. See package \link{zoo} for more information. 
   
-  bayeos.getSeries will return a zoo object containing one or more time series. As long as
-  localTime ist not set to TRUE, 'from' and 'until' given as character are converted into
-  POSIXct using the local time zone of the series. The POSIXct time zone of the
+  bayeos.getSeries will return a zoo object containing one or more time series. Search parameters from and until
+  should be given as character strings. For POSIXct arguments as.character() will be called. 
+  'from' and 'until' are interpreted in the local time zone of the series. The POSIXct time zone of the
   zoo object is set to the time zone of the the series. When there are time series with different time zones 
-  in the zoo object the time zone of the first series is relevant. 
+  in the zoo object the time zone of the first series is relevant.
 
   bayeos.readCSV is a wrapper for the read.table function of R. It returns a zoo object. 
   It support separated date and time columns. For dateformat description see \link{strftime}. Further arguments comform to

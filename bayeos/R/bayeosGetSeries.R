@@ -52,12 +52,10 @@ bayeos.setStatus <- function(ids,datetimes,status,con=1){
 # returns a data.frame with "datetime","value","status"
 # 
 bayeos.getSeries <- function(ids,con=1,from='yesterday',until='today',interval=NA,aggfunc=NA,aggint=NA,
-		maxrows=10000,csFlag=FALSE,statusFilter=c(0,1,2,3,4,8,9),localTime=F){
+		maxrows=10000,csFlag=FALSE,statusFilter=c(0,1,2,3,4,8,9)){
 	ids=bayeos.id2id(ids,con)
-	if(! localTime){
-	  tz=bayeos.call(con,'MessungHandler.getTimeZone',as.integer(ids[1]))
-	  setBayeosConTZ(con,tz)
-	} else setBayeosConTZ(con,Sys.timezone())
+	tz=bayeos.call(con,'MessungHandler.getTimeZone',as.integer(ids[1]))
+	setBayeosConTZ(con,tz)
 	
 	interval=tolower(interval)
 	aggfunc=tolower(aggfunc)
