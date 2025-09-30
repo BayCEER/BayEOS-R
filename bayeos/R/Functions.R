@@ -178,9 +178,7 @@ getTimeFilter <- function (from, until, interval, con) {
     from = switch(from,
                   'yesterday' = strftime(Sys.Date() - 1, format = "%Y-%m-%d %H:%M"),
                   from)
-    until = switch(until,
-                   'today' = strftime(Sys.time()),
-                   until)
+    until = switch(until, 'today' = strftime(Sys.time()), until)
     timefilter = c(from, until)
   }
   #	timefilter=as.POSIXct(timefilter,tz=.localenv$c[[con]]$tz) Macht z.T. Probleme z.B. '2010-01-01 8:00','2010-01-03'
@@ -222,7 +220,8 @@ checkReferences <- function(ref,
 
 cleanupImportedData <- function(data, tz, naString = NULL) {
   del = sapply(2:length(data), function(x)
-    ! (class(data[[x]]) == 'numeric' | class(data[[x]]) == 'integer'))
+    ! (class(data[[x]]) == 'numeric' |
+         class(data[[x]]) == 'integer'))
   if (sum(del) > 0) {
     index = 2
     for (i in 1:length(del)) {

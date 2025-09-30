@@ -1,10 +1,10 @@
 Package: bayeos
 Type: Package
 Title: BayEOS Server Access
-Version: 1.6.0
-Date: 2024-10-28
+Version: 1.7.0
+Date: 2025-09-30
 Author: Stefan Holzheu, Oliver Archner
-Maintainer: Stefan Holzheu <stefan.holzheu@bayceer.uni-bayreuth.de>
+Maintainer: Stefan Holzheu <stefan.holzheu@uni-bayreuth.de>
 Description: This package provides functions to access BayEOS databases
 Imports: RCurl, XML, zoo, methods 
 License: LGPL-3

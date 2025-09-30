@@ -25,7 +25,8 @@ bayeos.pwd(con=1)
 bayeos.cd(id=NULL,con=1,ls=TRUE)
 bayeos.createFolder(name,id_parent=NULL,con=1,ls=TRUE,force_create=FALSE)
 bayeos.createSeries(name,con=1,ls=TRUE,warningLevel=1,tz='Etc/GMT-1',description='',
-			resolution=600,planstart=NULL,planend=NULL,intervaltype='undefined',id_parent=NULL,force_create=FALSE)
+			resolution=600,planstart=NULL,planend=NULL,intervaltype='undefined',id_parent=NULL,
+			lon=NULL,lat=NULL,elevation=NULL,force_create=FALSE)
 bayeos.createDFColumn(name,colNr,class,description=NULL,con=1,id_parent=NULL,ls=TRUE,
 		planstart=NULL,planend=NULL,recstart=NULL,recend=NULL,force_create=FALSE)
 bayeos.createDF(name,description=NULL,tz=NULL,con=1,id_parent=NULL,ls=TRUE,
@@ -35,7 +36,8 @@ bayeos.updateDF(id,name=NA,description=NA,tz=NA,con=1,id_parent=NA,ls=FALSE,
 bayeos.updateDFColumn(id,name=NA,colNr=NA,class=NA,description=NA,con=1,id_parent=NA,ls=FALSE,
 		planstart=NA,planend=NA,recstart=NA,recend=NA)
 bayeos.updateSeries(id,name=NA,tz=NA,description=NA,resolution=NA,
-		planstart=NA,planend=NA,intervaltype=NA,id_parent=NA,con=1,ls=FALSE)
+		planstart=NA,planend=NA,intervaltype=NA,id_parent=NA,
+		lon=NA,lat=NA,elevation=NA,con=1,ls=FALSE)
 bayeos.updateNode(id,name=NA,id_parent=NA,ls=TRUE,con=1)
 bayeos.deleteNode(id,con=1,confirm=TRUE,ls=TRUE,removeRows=FALSE)
 bayeos.getChilds(id,isExtern=FALSE,maxDepth=-1,pathFilter='',classFilter='',con=1)
@@ -70,6 +72,9 @@ bayeos.getNode(id,con=1)
 	\item{resolution}{time series resolution in seconds}
 	\item{tz}{time zone string e.g. Etc/GMT-1}
 	\item{intervaltype}{one of undefined,start,end}
+	\item{lon}{longitude in degrees}
+	\item{lat}{latitude in degrees}
+	\item{elevation}{elevation in meter}
 	\item{colNr}{Data frame column number}
 	\item{class}{Data frame column data type (STRING,BOOLEAN,INTEGER,DOUBLE,DATE)}
 	\item{confirm}{Needs confirmation before deleting a node}

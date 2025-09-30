@@ -1,6 +1,7 @@
 
 
 
+
 bayeos.getConnection <- function(con = 1)
   .localenv$c[[con]]
 
@@ -79,9 +80,7 @@ bayeos.connect <-
     if (list) {
       cat("Available connections\n")
       sapply(pw_file, function(x)
-        cat("Alias:", x[1], "\n",
-            "URL:", x[2], "\n",
-            "User:", x[3], "\n\n"))
+        cat("Alias:", x[1], "\n", "URL:", x[2], "\n", "User:", x[3], "\n\n"))
       return(0)
     }
     # Take first entry in pw_file if no url was given
@@ -152,7 +151,7 @@ bayeos.connect <-
         )
       ) -
         as.numeric(Sys.time())) / 24 / 3600)
-      refresh_token=paste(
+      refresh_token = paste(
         "Please call\n\nbayeos.connect(url=\"",
         pw_file[[pw_file_line]][2],
         "\", save_as =\"",
@@ -161,7 +160,13 @@ bayeos.connect <-
         sep = ''
       )
       if (days < 0) {
-        stop(paste("Your token expired. Use login+password to create a new token.",refresh_token, sep="\n"))
+        stop(
+          paste(
+            "Your token expired. Use login+password to create a new token.",
+            refresh_token,
+            sep = "\n"
+          )
+        )
       }
       if (days < 30) {
         warning(paste("Your token will expire in", days, "days.", refresh_token))
@@ -181,7 +186,8 @@ bayeos.connect <-
                       .opts = opts,
                       .curl = curl)
     version = as.integer(unlist(strsplit(version, '\\.')))
-    tokenSupport=version[1]>2 || (version[1]==2 && version[2]>0)
+    tokenSupport = version[1] > 2 || (version[1] == 2 &&
+                                        version[2] > 0)
     
     if (!is_token && tokenSupport &&
         (!is.na(pw_file_line) || is.character(save_as))) {
@@ -282,18 +288,17 @@ bayeos.connect <-
       'mess_einheit',
       'web_ordner'
     )
-    root_ids = sapply(classes,
-                      function(x)
-                        xml.rpc(
-                          url,
-                          'TreeHandler.getRoot',
-                          x,
-                          activeFilter,
-                          missingInterval,
-                          timeFilter,
-                          .opts = opts,
-                          .curl = curl
-                        )[[3]])
+    root_ids = sapply(classes, function(x)
+      xml.rpc(
+        url,
+        'TreeHandler.getRoot',
+        x,
+        activeFilter,
+        missingInterval,
+        timeFilter,
+        .opts = opts,
+        .curl = curl
+      )[[3]])
     
     treeNames = c(
       'check_write',
@@ -332,7 +337,9 @@ bayeos.connect <-
         'intervaltypes' = intervaltypes,
         'status' = status,
         bayeosVersion = version,
-        'treeNames' = treeNames
+        'treeNames' = treeNames,
+        'gis_features' = version[1] > 2 ||
+          (version[1] == 2 && version[2] >= 2)
       )
     # Changing to Root-Folder:
     root = bayeos.call(
